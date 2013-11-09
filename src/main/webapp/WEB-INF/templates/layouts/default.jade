@@ -1,12 +1,43 @@
 -@ val title: String
 -@ val headline: String = title
 -@ val body: String
+-@ val page: String
 
-!!!
+!!! 5
 html
-  head
-    title= title
-  body
-    #content
-      h1= headline
-      != body
+	head
+		script(src='//code.jquery.com/jquery.js')
+		link(href='/dist/css/bootstrap.min.css' rel='stylesheet')
+		script(src='/dist/js/bootstrap.min.js')
+		link(href='/dist/css/style.css' rel='stylesheet')
+		title= "SmartMeal - " + title
+	body
+		.navbar.navbar-default.navbar-fixed-top
+			.row
+				.col-md-1
+				.col-md-10
+					a.navbar-brand(href="/") SmartMeal
+					ul.nav.navbar-nav
+						li(class={if(page=="home") "active" else ""})
+							a(href="/home") Home
+						li(class={if(page=="who") "active" else ""})
+							a(href="/who") Who We Are
+						li(class={if(page=="involved") "active" else ""})
+							a(href="/involved") Get Involved
+						li(class={if(page=="news") "active" else ""})
+							a(href="/news") News
+						li(class={if(page=="donate") "active" else ""})
+							a(href="/donate") Donate
+						li(class={if(page=="photos") "active" else ""})
+							a(href="/photos") Photo Gallery
+						li(class={if(page=="members") "active" else ""})
+							a(href="/members") Members
+						li(class={if(page=="contact") "active" else ""})
+							a(href="/contact") Contact Us
+				.col-md-1
+		#content
+			.row
+				.col-md-1
+				.col-md-10
+					!= body
+				.col-md-1
