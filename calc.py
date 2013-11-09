@@ -54,7 +54,10 @@ def calcCalcium(age, gender): #milligrams
 	else:
 		return 1200
 
-print calcCalcium(18, )
+def calcFat(age, gender, activity, height, weight):
+	return calcCalories(age, gender, activity, height, weight)/36.0
+# print ca
+
 
 # print calcCalories(17, 'male', 3, calcInches(5,8), 120)
 # print calcProtein(200, 1)
