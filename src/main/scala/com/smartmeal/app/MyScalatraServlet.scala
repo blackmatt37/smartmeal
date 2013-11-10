@@ -59,7 +59,7 @@ object MyLPProblem {
   }
   
 }
-trait SlickRoutes extends MyScalatraServlet {
+trait SlickRoutes extends ScalatraServlet {
   val db: Database
   get("/db") {
     db withSession {
