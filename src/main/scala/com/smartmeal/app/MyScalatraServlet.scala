@@ -13,7 +13,13 @@ class MyScalatraServlet extends SmartmealStack with GZipSupport{
 
 object MyLPProblem {
    def solve =  {
-      val cal = Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197)
+      val cal =   Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197)
+      val carb =  Array(38, 93, 38, 15, 70, 15, 28, 26, 35, 0, 9, 25, 47, 22, 43, 41, 2, 27, 12, 13, 39, 35, 29, 32, 29, 30, 32, 1, 1, 0.29, 24, 27, 18, 31)
+      val sugar = Array(8, 57, 8, 2, 51, 2, 14, 2, 11, 0, 9, 6, 27, 21, 5, 4, 1, 21, 11, 13, 0, 15, 14, 9, 12, 15, 13, 0.611, 0.771, 0.14, 9.5, 7, 8, 26)
+      val fat =   Array(8, 8, 12, 4, 3, 8, 12, 2, 6, 4, 0, 10, 21, 11, 6, 1, 5, 0.368, 8, 0, 3, 0.101, 1, 2, 2, 2, 4, 10, 8, 5, 0.273, 0.389, 0, 3)
+      val prot =  Array(7, 7, 7, 2, 2, 2, 3, 5, 5, 0, 0, 5, 8, 3, 11, 8, 3, 2, 8, 9, 4, 2, 2, 6, 4, 2, 2, 11, 7, 5, 0.482, 1, 0.508, 11)
+      val calc =  Array(189, 270, 190.1, 79, 160, 80.1, 30, 46, 47.1, 1.1, 0, 20, 60, 40, 90, 30, 60, 160, 300, 320, 150, 1.2, 140, 20, 130, 120, 180, 190, 30, 20, 10, 10, 0, 391)
+      
       val mip = MIPSolver()
       val x0 = MIPVar(mip,"x0",0 to 1)
       val x1 = MIPVar(mip,"x1",0 to 1)
@@ -36,9 +42,22 @@ object MyLPProblem {
       val x18 = MIPVar(mip,"x18",0 to 1)
       val x19 = MIPVar(mip,"x19",0 to 1)
       val x20 = MIPVar(mip,"x20",0 to 1)
-      val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20)
-      mip.minimize(sum(0 to 10)(i => x(i)*cal(i))) subjectTo {
-        mip.add(x0 == 1)
+      val x21 = MIPVar(mip,"x21",0 to 1)
+      val x22 = MIPVar(mip,"x22",0 to 1)
+      val x23 = MIPVar(mip,"x23",0 to 1)
+      val x24 = MIPVar(mip,"x24",0 to 1)
+      val x25 = MIPVar(mip,"x25",0 to 1)
+      val x26 = MIPVar(mip,"x26",0 to 1)
+      val x27 = MIPVar(mip,"x27",0 to 1)
+      val x28 = MIPVar(mip,"x28",0 to 1)
+      val x29 = MIPVar(mip,"x29",0 to 1)
+      val x30 = MIPVar(mip,"x30",0 to 1)
+      val x31 = MIPVar(mip,"x31",0 to 1)
+      val x32 = MIPVar(mip,"x32",0 to 1)
+      val x33 = MIPVar(mip,"x33",0 to 1)
+      val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33)
+      mip.minimize(sum(0 to 33)(i => x(i)*cal(i))) subjectTo {
+        mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= )
         mip.add(x1 == 1)
       }
       x map (_.getValue)
@@ -121,6 +140,7 @@ object calc {
     val inch: Int = params("inches").toInt
     val weight: Int = params("weight").toInt
     info = calc.nutri(age, gender, activity, feet, inch, weight)
+    info
     
   }
   get("/meal") {
