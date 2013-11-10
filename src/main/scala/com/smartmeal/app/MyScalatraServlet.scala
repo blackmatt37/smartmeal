@@ -20,7 +20,7 @@ object MyLPProblem {
       mip.minimize(sum(x)) subjectTo {
         mip.add(sum(0 to x.size)(i => x(i)*cal(i)) >= 200)
       }
-      x(1).getValue
+      // x(1).getValue
   
    }
 }
