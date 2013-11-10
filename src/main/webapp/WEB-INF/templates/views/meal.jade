@@ -9,11 +9,14 @@
 	.well
 		.row
 			.col-md-6
-				form.form
+				form.form(action="/meal" method="post")
 					.form-group
 						label(for="meal") Meal
-						select.form-control(id="meal")
+						select.form-control(name="meal")
 							option Breakfast
 							option Lunch
 							option Dinner
-						button.btn.btn-default(type="submit") Select
+					.form-group
+						label(for="course") Main Course
+						input.form-control(type="text" name="course" placeholder="Enter Main Course")
+					button.btn.btn-default(type="submit") Select

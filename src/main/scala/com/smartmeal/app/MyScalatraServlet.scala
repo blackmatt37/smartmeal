@@ -1,12 +1,21 @@
 package com.smartmeal.app
 
+import scala.slick.session.Database
 import org.scalatra._
 import scalate.ScalateSupport
 import oscar.linprog.modeling._
 import oscar.linprog._
 import oscar.algebra._
+import scala.slick.session._
+import scala.slick.lifted.TypeMapper._
+import scala.slick.jdbc.{ GetResult, StaticQuery => Q }
+import Database.threadLocalSession
 
-class MyScalatraServlet extends SmartmealStack {
+case class SlickApp(db: Database) extends MyScalatraServlet with SlickRoutes
+
+case class Supplier(id: Int, name: String, street: String, city: String, state: String, zip: String)
+
+class MyScalatraServlet extends SmartmealStack with GZipSupport{
 
 object MyLPProblem {
    def solve =  {
@@ -28,19 +37,48 @@ object MyLPProblem {
 
 
 
-
   get("/") {
     contentType = "text/html"
-    MyLPProblem.solve
-    // jade("home.jade")
+    jade("home.jade")
   }
   get("/home") {
       contentType = "text/html"
       jade("home.jade")
   }
+  post("/home") {
+    params("sex")
+    params("email")
+  }
   get("/meal") {
     contentType = "text/html"
+    // MyLPProblem.solve
     jade("meal.jade")
+  }
+  post("/meal") {
+    params("meal")
   }
   
 }
+trait SlickRoutes extends MyScalatraServlet {
+  val db: Database
+  get("/db") {
+    db withSession {
+      Q.updateNA("create table suppliers("+
+  "id int not null primary key, "+
+  "name varchar not null, "+
+  "street varchar not null, "+
+  "city varchar not null, "+
+  "state varchar not null, "+
+  "zip varchar not null)").execute
+    }
+    "DONE"
+  }
+}
+
+
+
+
+
+
+
+

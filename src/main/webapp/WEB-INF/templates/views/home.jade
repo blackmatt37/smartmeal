@@ -9,28 +9,47 @@
 	.well
 		.row
 			.col-md-6
-				form.form
+				form.form(action="/home" method="post")
 					.form-group
 						label(for="email") Email Address
-						input.form-control(type="email" id="email" placeholder="Enter Email")
+						input.form-control(type="email" name="email" placeholder="Enter Email")
 					.form-group
 						label(for="password") Password
-						input.form-control(type="password" id="password" placeholder="Enter Password")
+						input.form-control(type="password" name="password" placeholder="Enter Password")
 					.form-group
 						label(for="weight") Weight
-						input.form-control(type="number" id="weight" placeholder="Enter Weight")
+						input.form-control(type="number" name="weight" placeholder="Enter Weight")
 					.form-group
 						label(for="age") Age
-						input.form-control(type="number" id="age" placeholder="Enter Age")
+						input.form-control(type="number" name="age" placeholder="Enter Age")
 					.form-group
 						label(for="sex") Sex
-						select.form-control(id="sex")
+						select.form-control(name="sex")
 							option Male
 							option Female
 					.form-group-inline
 						label(for="feet") Height
-						input.form-control(type="number" id="feet" placeholder="Feet")
-						input.form-control(type="number" id="inches" placeholder="Inches")
+						input.form-control(type="number" name="feet" placeholder="Feet")
+						input.form-control(type="number" name="inches" placeholder="Inches")
+					br
+					.form-group
+						label(for="activity") Activity Level
+						.radio
+							label
+								input(type="radio" name="activity" name="activity0" value="0")
+								= "Sedentary"
+						.radio
+							label
+								input(type="radio" name="activity" name="activity1" value="1")
+								= "Light"
+						.radio
+							label
+								input(type="radio" name="activity" name="activity2" value="2")
+								= "Moderate"
+						.radio
+							label
+								input(type="radio" name="activity" name="activity3" value="3")
+								= "Extreme"
 					button.btn.btn-default(type="submit") Submit
 
 
