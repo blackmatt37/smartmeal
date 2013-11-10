@@ -1,0 +1,31 @@
+- attributes("title") = "Your Page"
+- attributes("headline") = "Your Page"
+- attributes("page") = "your"
+-@ val cal:String 
+-@ val carbs: String 
+-@ val sugar: String
+-@ val fat: String
+-@ val protein: String
+-@ val calc: String
+
+h1 Your Nutrition Requirements
+
+br
+
+table.table
+	tr
+		td Calories
+		td Carbohydrates (g)
+		td Sugar (g)
+		td Fat (g)
+		td Protein (g)
+		td Calcium (mg)
+	tr
+		td= cal
+		td= carbs
+		td= sugar
+		td= fat
+		td= protein
+		td= calc
+a(href="/meal")
+	button.btn.btn-default(type="login") Plan a Meal

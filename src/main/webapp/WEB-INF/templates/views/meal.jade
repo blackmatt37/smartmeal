@@ -2,6 +2,9 @@
 - attributes("headline") = "SmartMeal"
 - attributes("page") = "meal"
 
+script(src='/dist/js/script.js')
+script(src='//code.jquery.com/ui/1.10.3/jquery-ui.js')
+
 .row 
 	.jumbotron
 		h1 Meal
@@ -11,12 +14,12 @@
 			.col-md-6
 				form.form(action="/meal" method="post")
 					.form-group
-						label(for="meal") Meal
-						select.form-control(name="meal")
-							option Breakfast
-							option Lunch
-							option Dinner
+						label(for="course") Breakfast Course
+						input.form-control(type="text" id="break" name="course" placeholder="Enter Breakfast Course")
 					.form-group
-						label(for="course") Main Course
-						input.form-control(type="text" name="course" placeholder="Enter Main Course")
+						label(for="course") Lunch Course
+						input.form-control(type="text" id="lunch" name="course" placeholder="Enter Lunch Course")
+					.form-group
+						label(for="course") Dinner Course
+						input.form-control(type="text" id="dinner" name="course" placeholder="Enter Dinner Course")
 					button.btn.btn-default(type="submit") Select

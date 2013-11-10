@@ -5,10 +5,11 @@
 .row
 	.jumbotron
 		h1 Welcome to SmartMeal
-		p Sign Up
 	.well
 		.row
 			.col-md-6
+				h1 Sign Up
+				br
 				form.form(action="/home" method="post")
 					.form-group
 						label(for="email") Email Address
@@ -51,6 +52,16 @@
 								input(type="radio" name="activity" name="activity3" value="3")
 								= "Extreme"
 					button.btn.btn-default(type="submit") Submit
+			.col-md-6
+				h1 Login
+				br
+				.form-group
+					label(for="email") Email Address
+					input.form-control(type="email" name="email" placeholder="Enter Email")
+				.form-group
+					label(for="password") Password
+					input.form-control(type="password" name="password" placeholder="Enter Password")
+				button.btn.btn-default(type="login") Login
 
 
 

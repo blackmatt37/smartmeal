@@ -137,26 +137,32 @@ object calc {
       jade("home.jade")
   }
   post("/home") {
+    contentType = "text/html"
     val age: Int = params("age").toInt
     val gender: String = params("sex")
     val activity: Int = 1 //params("activity").toInt
     val feet: Int = params("feet").toInt
     val inch: Int = params("inches").toInt
     val weight: Int = params("weight").toInt
-    calc.nutri(age, gender, activity, feet, inch, weight)
+    info = calc.nutri(age, gender, activity, feet, inch, weight).asInstanceOf[(Double, Double, Double, Double, Double, Double)]
+    redirect("/your")
     
+  }
+  get("/your") {
+    contentType = "text/html"
+    jade("your.jade", "cal" -> info._1.toString.substring(0,4), "carbs" -> info._2.toString.substring(0,3), "sugar" -> info._3.toString, "fat" -> info._4.toString.substring(0,4), "protein" -> info._5.toString, "calc" -> info._6.toString)
   }
   get("/meal") {
     contentType = "text/html"
-    // jade("meal.jade")
-    MyLPProblem.solve.mkString(" ")
+    jade("meal.jade")
+    // MyLPProblem.solve.mkString(" ")
     // println("AGAIN")
     
   }
   post("/meal") {
     params("meal")
   }
-  var info = ()
+  var info = new Tuple6(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 }
 
 
