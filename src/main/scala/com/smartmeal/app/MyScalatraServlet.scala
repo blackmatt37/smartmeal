@@ -203,7 +203,7 @@ object calc {
     val lunch: Int  = params("lunch").toInt
     val dinner: Int = params("dinner").toInt
     val menu = MyLPProblem.solve(break, lunch, dinner)
-    // jade("plan.jade", "menu" -> menu, "cal" -> info._1.toString.substring(0,4), "carbs" -> info._2.toString.substring(0,3), "sugar" -> info._3.toString, "fat" -> info._4.toString.substring(0,4), "protein" -> info._5.toString, "calc" -> info._6.toString)
+    jade("plan.jade", "menu" -> menu, "cal" -> info._1.toString.substring(0,4), "carbs" -> info._2.toString.substring(0,3), "sugar" -> info._3.toString, "fat" -> info._4.toString.substring(0,4), "protein" -> info._5.toString, "calc" -> info._6.toString)
   }
   var info = new Tuple6(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 }
