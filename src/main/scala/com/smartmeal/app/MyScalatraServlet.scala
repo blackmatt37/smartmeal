@@ -20,7 +20,8 @@ object MyLPProblem {
       val fat =   Array(8, 8, 12, 4, 3, 8, 12, 2, 6, 4, 0, 10, 21, 11, 6, 1, 5, 0.368, 8, 0, 3, 0.101, 1, 2, 2, 2, 4, 10, 8, 5, 0.273, 0.389, 0, 3)
       val prot =  Array(7, 7, 7, 2, 2, 2, 3, 5, 5, 0, 0, 5, 8, 3, 11, 8, 3, 2, 8, 9, 4, 2, 2, 6, 4, 2, 2, 11, 7, 5, 0.482, 1, 0.508, 11)
       val calc =  Array(189, 270, 190.1, 79, 160, 80.1, 30, 46, 47.1, 1.1, 0, 20, 60, 40, 90, 30, 60, 160, 300, 320, 150, 1.2, 140, 20, 130, 120, 180, 190, 30, 20, 10, 10, 0, 391)
-
+      val primary = Array("Pancake", "Pancake", "Pancake", "Waffle", "Waffle", "Waffle", "Donut", "Toast", "Toast", "", "", "Croissant", "Croissant", "", "Bagel", "Bagel", "", "Orange Juice", "Milk", "Milk", "Oatmeal", "Cereal", "Cereal", "Cereal", "Cereal", "Cereal", "Cereal", "Egg", "Egg", "Egg", "Apple", "Banana", "Mixed Fruit", "Plain Yogurt", "Cheese", "Cheese", "Toast", "Cheese Sandwitch", "", "", "Hot Dog", "Hot Dog", "", "Pizza", "Pizza", "Ham", "Fried Chicken", "Buffalo Wings", "French Fries", "Hamburger", "Cheeseburger", "Mashed Potatoes", "Caesar Salad", "Caesar Salad", "", "Roasted Vegetables", "Rice", "Rice", "Orange Juice", "Apple Juice", "Steak")
+      val second  = Array("", "Maple Syrup", "Butter", "", "Maple Syrup", "Butter", "", "", "Butter, Jam", "", "", "", "Nutela", "", "Cream Cheese", "", "", "", "Whole", "Skim", "", "Frosted Flakes", "Lucky Charmes", "Specieal K", "Honey Nut Cheerios", "Cocoa Puffs", "Cinnamon Toast Crunch", "Omelette", "Scrambled", "Fried", "", "", "", "", "Cheddar", "Swiss", "", "", "", "", "Ketchup", "", "", "Cheese", "Pepperoni", "", "", "", "", "", "", "", "", "Ranch", "", "", "Fried", "White", "", "", "")
       val mip = MIPSolver()
       val x0 = MIPVar(mip,"x0",0 to 1)
       val x1 = MIPVar(mip,"x1",0 to 1)
@@ -98,8 +99,8 @@ object MyLPProblem {
         mip.add(x48 + x51 + x52 + x53 + x55 + x56 + x57 == 3)
         mip.add(x58 + x59 == 2)
       }
-      val temp = ((x map (p => (p.getName.substring(1), p.getValue))))
-      temp filter ( _._2 == 1.0)
+      val temp = ((x map (p => (p.getName.substring(1).toInt, p.getValue))))
+      (temp filter ( _._2 == 1.0)) map {case (k,v) => primary(k)}
   
    }
 }
