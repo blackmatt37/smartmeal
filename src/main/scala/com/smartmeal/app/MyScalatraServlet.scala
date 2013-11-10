@@ -13,18 +13,18 @@ class MyScalatraServlet extends SmartmealStack with GZipSupport{
 
 object MyLPProblem {
    def solve =  {
-    val lp = LPSolver()
- 
-    val x0 = LPVar(lp,"x0",0,40) // can take value in continuous interval [0,40]
-    val x1 = LPVar(lp,"x1",0, 1000) 
-    val x2 = LPVar(lp,"x2",0 ,17) 
-    val x3 = LPVar(lp,"x3",2,3)  
+    val mip = MIPSolver()
+      val x0 = MIPVar(mip,"x0",0,40)
+      val x1 = MIPVar(mip,"x1",0 to 1000) // can take integer value in range[0 .. 1000]
+      val x2 = MIPVar(mip,"x2",0 until 18)// can take integer value in range[0 .. 17] 
+      val x3 = MIPVar(mip,"x3",2,3)  
      
-    lp.maximize(x0+2*x1+3*x2+x3) subjectTo {
-    lp.add(-1*x0 + x1 + x2 + 10*x3 <= 20)
-    lp.add(x0 - 3.0*x1 + x2 <= 30)
-    lp.add(x1 - 3.5*x3 == 0 )
-    }
+     
+      mip.maximize(x0+2*x1+3*x2+x3) subjectTo {
+    mip.add(-1*x0 + x1 + x2 + 10*x3 <= 20)
+    mip.add(x0 - 3.0*x1 + x2 <= 30)
+    mip.add(x1 - 3.5*x3 == 0 )
+      }
     x0.getValue
   
    }
