@@ -36,6 +36,7 @@ object MyLPProblem {
       val x18 = MIPVar(mip,"x18",0 to 1)
       val x19 = MIPVar(mip,"x19",0 to 1)
       val x20 = MIPVar(mip,"x20",0 to 1)
+      val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20)
       mip.minimize(sum(0 to 10)(i => x(i)*cal(i))) subjectTo {
         mip.add(x0 == 1)
         mip.add(x1 == 1)
