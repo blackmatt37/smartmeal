@@ -98,11 +98,11 @@ object MyLPProblem {
         mip.add(x58 + x59 == 2)
         mip.add(x(dinner) == 1) // force dinner
 
-        mip.add(sum(0 to 60)(i => x(i)*carb(i)) <= info._2+100)
-        mip.add(sum(0 to 60)(i => x(i)*sugar(i)) <= info._3+100)
-        mip.add(sum(0 to 60)(i => x(i)*fat(i)) <= info._4+100)
-        mip.add(sum(0 to 60)(i => x(i)*prot(i)) <= info._5+100)
-        mip.add(sum(0 to 60)(i => x(i)*calcium(i)) <= info._6+3000)
+        mip.add(sum(0 to 60)(i => x(i)*carb(i)) <= info._2+1000)
+        // mip.add(sum(0 to 60)(i => x(i)*sugar(i)) <= info._3+1000)
+        // mip.add(sum(0 to 60)(i => x(i)*fat(i)) <= info._4+1000)
+        // mip.add(sum(0 to 60)(i => x(i)*prot(i)) <= info._5+1000)
+        // mip.add(sum(0 to 60)(i => x(i)*calcium(i)) <= info._6+3000)
       }
       val temp = ((x map (p => (p.getName.substring(1).toInt, p.getValue))))
       (temp filter ( _._2 == 1.0)) map {case (k,v) => primary(k)}
