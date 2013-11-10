@@ -15,7 +15,7 @@ object MyLPProblem {
    def solve =  {
       val cal = Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197)
       val mip = MIPSolver()
-      val x = Array.fill(34)(MIPVar(mip, "x", 0 to 1))
+      val x = Array.fill(30)(MIPVar(mip, "x", 0 to 1))
      
       mip.minimize(sum(x)) subjectTo {
         mip.add(sum(0 to x.size)(i => x(i)*cal(i)) >= 200)
