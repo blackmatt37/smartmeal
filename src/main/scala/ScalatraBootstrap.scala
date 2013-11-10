@@ -14,7 +14,7 @@ class ScalatraBootstrap extends LifeCycle {
   	logger.info("Created c3p0 connection pool")
   	override def init(context: ServletContext) {
   		val db = Database.forDataSource(cpds)
-    	context.mount(new MyScalatraServerlet, "/*")
+    	context.mount(new MyScalatraServlet, "/*")
   	}
 
   	private def closeDbConnection() {
