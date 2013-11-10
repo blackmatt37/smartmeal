@@ -197,7 +197,7 @@ object calc {
     val break: Int  = params("break").toInt
     val lunch: Int  = params("lunch").toInt
     val dinner: Int = params("dinner").toInt
-    MyLPProblem.solve(break, lunch, dinner).mkString(" ")
+    MyLPProblem.solve(break, lunch, dinner).mkString(" || ")
   }
   var info = new Tuple6(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 }
