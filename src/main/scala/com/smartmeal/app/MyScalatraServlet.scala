@@ -98,7 +98,7 @@ object MyLPProblem {
         mip.add(x58 + x59 == 2)
         mip.add(x(dinner) == 1) // force dinner
 
-        mip.add(sum(0 to 60)(i => x(i)*carb(i)) <= info._2+1000)
+        mip.add(sum(0 to 60)(i => x(i)*carb(i)) <= info._2+200)
         // mip.add(sum(0 to 60)(i => x(i)*sugar(i)) <= info._3+1000)
         // mip.add(sum(0 to 60)(i => x(i)*fat(i)) <= info._4+1000)
         // mip.add(sum(0 to 60)(i => x(i)*prot(i)) <= info._5+1000)
