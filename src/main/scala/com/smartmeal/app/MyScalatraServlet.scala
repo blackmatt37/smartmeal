@@ -156,7 +156,7 @@ object calc {
   }
 
   def sugar(gender: String): Int = {
-    if(gender equals "male") 30 else 20
+    if(gender equals "male") 30*3 else 20*3
   }
 
   def nutri(age: Int, gender: String, activity: Int, feet: Int, inch: Int, weight: Int) = {
