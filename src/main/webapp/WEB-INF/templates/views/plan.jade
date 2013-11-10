@@ -37,6 +37,7 @@ table.table
 
 br
 
+h1 Breakfast
 table.table
 	tr
 		td 
@@ -53,7 +54,7 @@ table.table
 			b Protien
 		td 
 			b Calcium
-	- for(i <- 0 until menu.size)
+	- for(i <- 0 until (menu.size-7)
 		tr
 			td= menu(i)._1
 			td= menu(i)._2
