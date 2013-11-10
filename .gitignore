@@ -8,7 +8,6 @@
 # Packages
 *.egg
 *.egg-info
-dist
 build
 eggs
 parts
@@ -36,3 +35,20 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+*.class
+*.log
+
+# sbt specific
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+
+.idea
+.idea_modules

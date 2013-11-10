@@ -1,0 +1,19 @@
+- attributes("title") = "SmartMeal"
+- attributes("headline") = "SmartMeal"
+- attributes("page") = "meal"
+
+.row 
+	.jumbotron
+		h1 Meal
+		p Plan your meal
+	.well
+		.row
+			.col-md-6
+				form.form
+					.form-group
+						label(for="meal") Meal
+						select.form-control(id="meal")
+							option Breakfast
+							option Lunch
+							option Dinner
+						button.btn.btn-default(type="submit") Select
