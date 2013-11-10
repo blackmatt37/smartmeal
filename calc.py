@@ -64,6 +64,4 @@ def calcSugar(gender): #grams
 	if gender == 'male':
 		return 30
 	return 20
-def calcIron():
-	pass
 
