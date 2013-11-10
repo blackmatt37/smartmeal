@@ -12,8 +12,9 @@ import java.io._
 class MyScalatraServlet extends SmartmealStack with GZipSupport{
 
 object MyLPProblem {
-   def solve =  {
-      val cal =   Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197)
+   def solve(breakfast: Int, lunch: Int, dinner: Int) =  {
+      val cal =   Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197, 110, 70, 50, 240, 269, 120, 419, 389, 15, 250, 345, 70, 222, 90, 220, 421, 548, 249, 200, 286, 43, 61, 228, 257, 115, 115, 379)
+      //add the rest of nutrition data
       val carb =  Array(38, 93, 38, 15, 70, 15, 28, 26, 35, 0, 9, 25, 47, 22, 43, 41, 2, 27, 12, 13, 39, 35, 29, 32, 29, 30, 32, 1, 1, 0.29, 24, 27, 18, 31)
       val sugar = Array(8, 57, 8, 2, 51, 2, 14, 2, 11, 0, 9, 6, 27, 21, 5, 4, 1, 21, 11, 13, 0, 15, 14, 9, 12, 15, 13, 0.611, 0.771, 0.14, 9.5, 7, 8, 26)
       val fat =   Array(8, 8, 12, 4, 3, 8, 12, 2, 6, 4, 0, 10, 21, 11, 6, 1, 5, 0.368, 8, 0, 3, 0.101, 1, 2, 2, 2, 4, 10, 8, 5, 0.273, 0.389, 0, 3)
@@ -55,14 +56,47 @@ object MyLPProblem {
       val x31 = MIPVar(mip,"x31",0 to 1)
       val x32 = MIPVar(mip,"x32",0 to 1)
       val x33 = MIPVar(mip,"x33",0 to 1)
-      val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33)
+      val x34 = MIPVar(mip,"x34",0 to 1)
+      val x35 = MIPVar(mip,"x35",0 to 1)
+      val x36 = MIPVar(mip,"x36",0 to 1)
+      val x37 = MIPVar(mip,"x37",0 to 1)
+      val x38 = MIPVar(mip,"x38",0 to 1)
+      val x39 = MIPVar(mip,"x39",0 to 1)
+      val x40 = MIPVar(mip,"x40",0 to 1)
+      val x41 = MIPVar(mip,"x41",0 to 1)
+      val x42 = MIPVar(mip,"x42",0 to 1)
+      val x43 = MIPVar(mip,"x43",0 to 1)
+      val x44 = MIPVar(mip,"x44",0 to 1)
+      val x45 = MIPVar(mip,"x45",0 to 1)
+      val x46 = MIPVar(mip,"x46",0 to 1)
+      val x47 = MIPVar(mip,"x47",0 to 1)
+      val x48 = MIPVar(mip,"x48",0 to 1)
+      val x49 = MIPVar(mip,"x49",0 to 1)
+      val x50 = MIPVar(mip,"x50",0 to 1)
+      val x51 = MIPVar(mip,"x51",0 to 1)
+      val x52 = MIPVar(mip,"x52",0 to 1)
+      val x53 = MIPVar(mip,"x53",0 to 1)
+      val x54 = MIPVar(mip,"x54",0 to 1)
+      val x55 = MIPVar(mip,"x55",0 to 1)
+      val x56 = MIPVar(mip,"x56",0 to 1)
+      val x57 = MIPVar(mip,"x57",0 to 1)
+      val x58 = MIPVar(mip,"x58",0 to 1)
+      val x59 = MIPVar(mip,"x59",0 to 1)
+      val x60 = MIPVar(mip,"x60",0 to 1)
+      val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33, x34, x35, x36, x37, x38, x39, x40, x41, x42, x43, x44, x45, x46, x47, x48, x49, x50, x51, x52, x53, x54, x55, x56, x57, x58, x59, x60)
       mip.minimize(sum(0 to 33)(i => x(i)*cal(i))) subjectTo {
         // mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= 150)
         // mip.add(sum(0 to 33)(i => x(i)*cal(i)) == ))
-        mip.add(x1 == 1)
-        mip.add(x17 + x18 + x19 == 1)
-        mip.add(x20 +x21 + x22 + x23 + x24 + x25 + x6 == 1)
-        mip.add(x30 + x31 + x32 + x33 == 1)
+
+        mip.add(x(breakfast) == 1) //force picked meal
+        mip.add(x17 + x18 + x19 == 1) //one drink
+        mip.add(x20 +x21 + x22 + x23 + x24 + x25 + x6 == 1) // one cereal
+        mip.add(x30 + x31 + x32 + x33 == 1) //one snack
+
+        mip.add(x(lunch) == 1) //force lunch choice
+        mip.add(x37 + x40 + x41 + x43 + x44 + x45 + x46 + x47 + x60 == 2)
+        mip.add(x48 + x51 + x52 + x53 + x55 + x56 + x57 == 3)
+        mip.add(x58 + x59 == 2)
       }
       x map (_.getValue)
   
@@ -156,11 +190,12 @@ object calc {
     contentType = "text/html"
     jade("meal.jade")
     // MyLPProblem.solve.mkString(" ")
-    // println("AGAIN")
-    
   }
   post("/meal") {
-    params("meal")
+    val break: Int  = params("break").toInt
+    val lunch: Int  = params("lunch").toInt
+    val dinner: Int = params("dinner").toInt
+    MyLPProblem.solve(break, lunch, dinner).mkString(" ")
   }
   var info = new Tuple6(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 }

@@ -36,7 +36,33 @@ var breakfast = [
 ];
 
 var other = [
-
+"0.25 Cups Cheese (Shredded) - Cheddar", 
+"1 Slice Cheese - Swiss", 
+"1 Slice Toast (50 g)", 
+"Grilled Cheese Sandwitch (2 slices toast)", 
+"1 Hot Dog", 
+"1 Hot Dog Bun", 
+"1 Hot Dog w/ Ketchup", 
+"1 Hot Dog w/o Ketchup", 
+"1 tbspn of Ketchup", 
+"1slice from a Large Cheese Pizza", 
+"1 slice from a Large Pepperoni Pizza", 
+"4 slices of Ham", 
+"1 Fried Chicken", 
+"Buffalo Wings (3 oz.)", 
+"French Fries (134 g)", 
+"Hamburger", 
+"Cheese Burger", 
+"Mashed Potatoes (1 cup)", 
+"Caesar Salad (1/2 package)", 
+"Caesar Salad w/ Ranch Dressing", 
+"Ranch Dressing (1 tbspoon)", 
+"Roasted Vegetables (140 g)", 
+"Fried Rice (1 cup)", 
+"White Rice (1 cup)", 
+"Orange Juice (1 cup)", 
+"Apple Juice (1 cup)", 
+"Steak (182 g )"
 ];
 
 $(window).load(function() {
@@ -49,5 +75,13 @@ $(window).load(function() {
 	$("#dinner").autocomplete({
 		source: other
 	});
+	$("#submit").click(function() {
+		var value1 = breakfast.indexOf($("#break").val());
+		$("#break").val(value1);
+		var value2 = other.indexOf($("#lunch").val());
+		$("#lunch").val(value2+34);
+		var value3 = other.indexOf($("#dinner").val());
+		$("#dinner").val(value3+34);
+	})
 });
 
