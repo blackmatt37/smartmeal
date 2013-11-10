@@ -39,7 +39,7 @@ var other = [
 "0.25 Cups Cheese (Shredded) - Cheddar", 
 "1 Slice Cheese - Swiss", 
 "1 Slice Toast (50 g)", 
-"Grilled Cheese Sandwitch (2 slices toast)", 
+"Grilled Cheese Sandwich (2 slices toast)", 
 "1 Hot Dog", 
 "1 Hot Dog Bun", 
 "1 Hot Dog w/ Ketchup", 

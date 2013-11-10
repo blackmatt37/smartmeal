@@ -15,11 +15,11 @@ object MyLPProblem {
    def solve(breakfast: Int, lunch: Int, dinner: Int) =  {
       val cal =   Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197, 110, 70, 50, 240, 269, 120, 419, 389, 15, 250, 345, 70, 222, 90, 220, 421, 548, 249, 200, 286, 43, 61, 228, 257, 115, 115, 379)
       //add the rest of nutrition data
-      val carb =  Array(38, 93, 38, 15, 70, 15, 28, 26, 35, 0, 9, 25, 47, 22, 43, 41, 2, 27, 12, 13, 39, 35, 29, 32, 29, 30, 32, 1, 1, 0.29, 24, 27, 18, 31)
-      val sugar = Array(8, 57, 8, 2, 51, 2, 14, 2, 11, 0, 9, 6, 27, 21, 5, 4, 1, 21, 11, 13, 0, 15, 14, 9, 12, 15, 13, 0.611, 0.771, 0.14, 9.5, 7, 8, 26)
-      val fat =   Array(8, 8, 12, 4, 3, 8, 12, 2, 6, 4, 0, 10, 21, 11, 6, 1, 5, 0.368, 8, 0, 3, 0.101, 1, 2, 2, 2, 4, 10, 8, 5, 0.273, 0.389, 0, 3)
-      val prot =  Array(7, 7, 7, 2, 2, 2, 3, 5, 5, 0, 0, 5, 8, 3, 11, 8, 3, 2, 8, 9, 4, 2, 2, 6, 4, 2, 2, 11, 7, 5, 0.482, 1, 0.508, 11)
-      val calc =  Array(189, 270, 190.1, 79, 160, 80.1, 30, 46, 47.1, 1.1, 0, 20, 60, 40, 90, 30, 60, 160, 300, 320, 150, 1.2, 140, 20, 130, 120, 180, 190, 30, 20, 10, 10, 0, 391)
+      val carb =  Array(38, 93, 38, 15, 70, 15, 28, 26, 35, 0, 9, 25, 47, 22, 43, 41, 2, 27, 12, 13, 39, 35, 29, 32, 29, 30, 32, 1, 1, 0.29, 24, 27, 18, 31, 1, 0, 26, 52, 24, 23, 55, 47, 4, 28, 40, 3, 5, 2, 37, 38, 40, 37, 6, 12, 3, 12, 43, 55, 27, 28, 0)
+      val sugar = Array(8, 57, 8, 2, 51, 2, 14, 2, 11, 0, 9, 6, 27, 21, 5, 4, 1, 21, 11, 13, 0, 15, 14, 9, 12, 15, 13, 0.611, 0.771, 0.14, 9.5, 7, 8, 26, 0, 0, 2, 4, 0, 4, 12, 4, 4, 3, 4, 3, 0.125, 0, 0.375, 8, 8, 4, 1, 2.39, 0.695, 3, 0.588, 0.135, 21, 25, 0)
+      val fat =   Array(8, 8, 12, 4, 3, 8, 12, 2, 6, 4, 0, 10, 21, 11, 6, 1, 5, 0.368, 8, 0, 3, 0.101, 1, 2, 2, 2, 4, 10, 8, 5, 0.273, 0.389, 0, 3, 9, 5, 2, 14, 14, 1, 15, 15, 0, 11, 14, 2, 12, 2, 7, 20, 30, 10, 16, 24, 4, 0.61, 3, 1, 0.368, 0.285, 20)
+      val prot =  Array(7, 7, 7, 2, 2, 2, 3, 5, 5, 0, 0, 5, 8, 3, 11, 8, 3, 2, 8, 9, 4, 2, 2, 6, 4, 2, 2, 11, 7, 5, 0.482, 1, 0.508, 11, 7, 5, 5, 20, 12, 4, 16, 16, 0, 10, 15, 10, 22, 16, 4, 22, 30, 5, 11, 11.362, 0.181, 3, 7, 5, 2, 0.298, 46)
+      val calcium =  Array(189, 270, 190.1, 79, 160, 80.1, 30, 46, 47.1, 1.1, 0, 20, 60, 40, 90, 30, 60, 160, 300, 320, 150, 1.2, 140, 20, 130, 120, 180, 190, 30, 20, 10, 10, 0, 391, 200, 200, 46, 492, 20, 100, 120, 120, 0, 150, 140, 0, 20, 0, 20, 120, 260, 70, 150, 170, 10, 80, 20, 20, 160, 20, 10)
       val primary = Array("Pancake", "Pancake", "Pancake", "Waffle", "Waffle", "Waffle", "Donut", "Toast", "Toast", "", "", "Croissant", "Croissant", "", "Bagel", "Bagel", "", "Orange Juice", "Milk", "Milk", "Oatmeal", "Cereal", "Cereal", "Cereal", "Cereal", "Cereal", "Cereal", "Egg", "Egg", "Egg", "Apple", "Banana", "Mixed Fruit", "Plain Yogurt", "Cheese", "Cheese", "Toast", "Cheese Sandwitch", "", "", "Hot Dog", "Hot Dog", "", "Pizza", "Pizza", "Ham", "Fried Chicken", "Buffalo Wings", "French Fries", "Hamburger", "Cheeseburger", "Mashed Potatoes", "Caesar Salad", "Caesar Salad", "", "Roasted Vegetables", "Rice", "Rice", "Orange Juice", "Apple Juice", "Steak")
       val second  = Array("", "Maple Syrup", "Butter", "", "Maple Syrup", "Butter", "", "", "Butter, Jam", "", "", "", "Nutela", "", "Cream Cheese", "", "", "", "Whole", "Skim", "", "Frosted Flakes", "Lucky Charmes", "Specieal K", "Honey Nut Cheerios", "Cocoa Puffs", "Cinnamon Toast Crunch", "Omelette", "Scrambled", "Fried", "", "", "", "", "Cheddar", "Swiss", "", "", "", "", "Ketchup", "", "", "Cheese", "Pepperoni", "", "", "", "", "", "", "", "", "Ranch", "", "", "Fried", "White", "", "", "")
       val mip = MIPSolver()
@@ -86,8 +86,6 @@ object MyLPProblem {
       val x60 = MIPVar(mip,"x60",0 to 1)
       val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33, x34, x35, x36, x37, x38, x39, x40, x41, x42, x43, x44, x45, x46, x47, x48, x49, x50, x51, x52, x53, x54, x55, x56, x57, x58, x59, x60)
       mip.minimize(sum(0 to 33)(i => x(i)*cal(i))) subjectTo {
-        // mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= 150)
-        // mip.add(sum(0 to 33)(i => x(i)*cal(i)) == ))
 
         mip.add(x(breakfast) == 1) //force picked meal
         mip.add(x17 + x18 + x19 == 1) //one drink
@@ -99,6 +97,12 @@ object MyLPProblem {
         mip.add(x48 + x51 + x52 + x53 + x55 + x56 + x57 == 3)
         mip.add(x58 + x59 == 2)
         mip.add(x(dinner) == 1) // force dinner
+
+        mip.add(sum(0 to 60)(i => x(i)*carb(i)) <= info._2)
+        mip.add(sum(0 to 60)(i => x(i)*sugar(i)) <= info._3)
+        mip.add(sum(0 to 60)(i => x(i)*fat(i)) <= info._4)
+        mip.add(sum(0 to 60)(i => x(i)*prot(i)) <= info._5)
+        mip.add(sum(0 to 60)(i => x(i)*calcium(i)) <= info._6)
       }
       val temp = ((x map (p => (p.getName.substring(1).toInt, p.getValue))))
       (temp filter ( _._2 == 1.0)) map {case (k,v) => primary(k)}
