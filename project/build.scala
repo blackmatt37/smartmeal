@@ -22,12 +22,13 @@ object SmartmealBuild extends Build {
       crossPaths := false,
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
-      resolvers += "Twitter repo" at "http://maven.twttr.com",
+      resolvers += Resolver.sonatypeRepo("snapshots"),
       libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+        "org.scala-lang" %% "scala-pickling" % "0.8.0-SNAPSHOT",
         "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "compile;container",
         "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
       ),

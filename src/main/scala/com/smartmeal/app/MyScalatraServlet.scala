@@ -13,23 +13,26 @@ class MyScalatraServlet extends SmartmealStack with GZipSupport{
 
 object MyLPProblem {
    def solve =  {
-      val lp = LPSolver() 
-      val x0 = LPVar(lp,"x0",0,40) // can take value in continuous interval [0,40]
-      val x1 = LPVar(lp,"x1",0, 1000) 
-      val x2 = LPVar(lp,"x2",0 ,17) 
-      val x3 = LPVar(lp,"x3",2,3)  
+    val lp = LPSolver()
+ 
+    val x0 = LPVar(lp,"x0",0,40) // can take value in continuous interval [0,40]
+    val x1 = LPVar(lp,"x1",0, 1000) 
+    val x2 = LPVar(lp,"x2",0 ,17) 
+    val x3 = LPVar(lp,"x3",2,3)  
      
-      lp.maximize(x0+2*x1+3*x2+x3) subjectTo {
-      lp.add(-1*x0 + x1 + x2 + 10*x3 <= 20)
-      lp.add(x0 - 3.0*x1 + x2 <= 30)
-      lp.add(x1 - 3.5*x3 == 0 )
-      }
+    lp.maximize(x0+2*x1+3*x2+x3) subjectTo {
+    lp.add(-1*x0 + x1 + x2 + 10*x3 <= 20)
+    lp.add(x0 - 3.0*x1 + x2 <= 30)
+    lp.add(x1 - 3.5*x3 == 0 )
+    }
+    val x0v: Double = x0.getValue
       // println("objective"+lp.getObjectiveValue()) 
-      x1.value
+      x0v
    }
 }
 
 object calc {
+
   def protein(weight: Int, activity: Int): Double = {
     if(activity == 0) weight*(2.0/5) else {
       if(activity == 1) weight*(1.0/2) else {
@@ -54,7 +57,15 @@ object calc {
   }
 
   def calcium(age: Int, gender: String): Int = {
-     0
+     if(age < 1) 200 else {
+      if(age > 1 && age < 3) 700 else {
+        if(age > 4 && age < 8) 1000 else {
+          if(age > 9 && age < 18) 1300 else {
+            if(age > 19 && age < 50) {if(gender equals "male") 1000 else 1200} else 1200
+          }
+        }
+      }
+     }
   }
 
   def fat(age: Int, gender: String, activity: Int, height: Int, weight: Int): Double = {
@@ -69,6 +80,11 @@ object calc {
     if(gender equals "male") 30 else 20
   }
 
+  def nutri(age: Int, gender: String, activity: Int, feet: Int, inch: Int, weight: Int) = {
+    val height: Int = inches(feet, inch)
+    (calories(age, gender, activity, height, weight), carbs(age, gender, activity, height, weight), sugar(gender), fat(age, gender, activity, height, height), protein(weight, activity), calcium(age, gender))
+  }
+
 }
 
 
@@ -77,24 +93,31 @@ object calc {
     contentType = "text/html"
     jade("home.jade")
   }
-  get("/db") {
-    val db : SQLiteConnection = new SQLiteConnection(new File("/tmp/database"));
-    db.open(true)
-    db.exec("CREATE TABLE Test (test varchar(255));")
+  // get("/db") {
+  //   val db : SQLiteConnection = new SQLiteConnection(new File("/tmp/database"));
+  //   db.open(true)
+  //   db.exec("CREATE TABLE Test (test varchar(255));")
 
-  }
+  // }
   get("/home") {
       contentType = "text/html"
       jade("home.jade")
   }
   post("/home") {
-    params("sex")
-    params("email")
+    val age: Int = params("age").toInt
+    val gender: String = params("sex")
+    val activity: Int = 1 //params("activity").toInt
+    val feet: Int = params("feet").toInt
+    val inch: Int = params("inches").toInt
+    val weight: Int = params("weight").toInt
+    calc.nutri(age, gender, activity, feet, inch, weight)
+    
   }
   get("/meal") {
-    contentType = "text/html"
-    // MyLPProblem.solve
-    jade("meal.jade")
+    // contentType = "text/html"
+    MyLPProblem.solve
+    println("AGAIN")
+    // jade("meal.jade")
   }
   post("/meal") {
     params("meal")
