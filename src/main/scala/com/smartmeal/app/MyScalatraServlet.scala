@@ -15,14 +15,30 @@ object MyLPProblem {
    def solve =  {
       val cal = Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197)
       val mip = MIPSolver()
-      val x0 = MIPVar(mip,"x0",0,40)
-      val x1 = MIPVar(mip,"x1",0 to 1000) // can take integer value in range[0 .. 1000]
-      val x2 = MIPVar(mip,"x2",0 until 18)// can take integer value in range[0 .. 17] 
-      val x3 = MIPVar(mip,"x3",2,3)
-       mip.maximize(x0+2*x1+3*x2+x3) subjectTo {
-    mip.add(-1*x0 + x1 + x2 + 10*x3 <= 20)
-    mip.add(x0 - 3.0*x1 + x2 <= 30)
-    mip.add(x1 - 3.5*x3 == 0 )
+      val x0 = MIPVar(mip,"x0",0 to 1)
+      val x1 = MIPVar(mip,"x1",0 to 1)
+      val x2 = MIPVar(mip,"x2",0 to 1)
+      val x3 = MIPVar(mip,"x3",0 to 1)
+      val x4 = MIPVar(mip,"x4",0 to 1)
+      val x5 = MIPVar(mip,"x5",0 to 1)
+      val x6 = MIPVar(mip,"x6",0 to 1)
+      val x7 = MIPVar(mip,"x7",0 to 1)
+      val x8 = MIPVar(mip,"x8",0 to 1)
+      val x9 = MIPVar(mip,"x9",0 to 1)
+      val x10 = MIPVar(mip,"x10",0 to 1)
+      val x11 = MIPVar(mip,"x11",0 to 1)
+      val x12 = MIPVar(mip,"x12",0 to 1)
+      val x13 = MIPVar(mip,"x13",0 to 1)
+      val x14 = MIPVar(mip,"x14",0 to 1)
+      val x15 = MIPVar(mip,"x15",0 to 1)
+      val x16 = MIPVar(mip,"x16",0 to 1)
+      val x17 = MIPVar(mip,"x17",0 to 1)
+      val x18 = MIPVar(mip,"x18",0 to 1)
+      val x19 = MIPVar(mip,"x19",0 to 1)
+      val x20 = MIPVar(mip,"x20",0 to 1)
+      mip.minimize(sum(0 to 10)(i => x(i)*cal(i))) subjectTo {
+        mip.add(x0 == 1)
+        mip.add(x1 == 1)
       }
       mip.status
       // x(1).getValue
