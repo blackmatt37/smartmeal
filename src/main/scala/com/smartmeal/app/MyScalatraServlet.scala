@@ -105,7 +105,7 @@ object calc {
   get("/meal") {
     contentType = "text/html"
     jade("meal.jade")
-    MyLPProblem.solve
+    // MyLPProblem.solve
     // println("AGAIN")
     
   }
