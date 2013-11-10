@@ -2,5 +2,38 @@
 - attributes("headline") = "SmartMeal"
 - attributes("page") = "home"
 
-p Welcome
+.row
+	.jumbotron
+		h1 Welcome to SmartMeal
+		p Sign Up
+	.well
+		.row
+			.col-md-6
+				form.form
+					.form-group
+						label(for="email") Email Address
+						input.form-control(type="email" id="email" placeholder="Enter Email")
+					.form-group
+						label(for="password") Password
+						input.form-control(type="password" id="password" placeholder="Enter Password")
+					.form-group
+						label(for="weight") Weight
+						input.form-control(type="number" id="weight" placeholder="Enter Weight")
+					.form-group
+						label(for="age") Age
+						input.form-control(type="number" id="age" placeholder="Enter Age")
+					.form-group
+						label(for="sex") Sex
+						select.form-control(id="sex")
+							option Male
+							option Female
+					.form-group-inline
+						label(for="feet") Height
+						input.form-control(type="number" id="feet" placeholder="Feet")
+						input.form-control(type="number" id="inches" placeholder="Inches")
+					button.btn.btn-default(type="submit") Submit
+
+
+
+
 

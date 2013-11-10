@@ -32,6 +32,6 @@ trait SmartmealStack extends ScalatraServlet with ScalateSupport {
     findTemplate(requestPath) map { path =>
       contentType = "text/html"
       layoutTemplate(path)
-    } orElse serveStaticResource() getOrElse { jade("404.jade")}
+    } orElse serveStaticResource() getOrElse { contentType = "text/html"; jade("404.jade")}
   }
 }

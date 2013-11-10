@@ -12,7 +12,7 @@ html
 		link(href='/dist/css/style.css' rel='stylesheet')
 		title= "SmartMeal - " + title
 	body
-		.navbar.navbar-default.navbar-fixed-top
+		.navbar.navbar-default.navbar-fixed-top.navbar-inverse
 			.row
 				.col-md-1
 				.col-md-10
@@ -20,20 +20,8 @@ html
 					ul.nav.navbar-nav
 						li(class={if(page=="home") "active" else ""})
 							a(href="/home") Home
-						li(class={if(page=="who") "active" else ""})
-							a(href="/who") Who We Are
-						li(class={if(page=="involved") "active" else ""})
-							a(href="/involved") Get Involved
-						li(class={if(page=="news") "active" else ""})
-							a(href="/news") News
-						li(class={if(page=="donate") "active" else ""})
-							a(href="/donate") Donate
-						li(class={if(page=="photos") "active" else ""})
-							a(href="/photos") Photo Gallery
-						li(class={if(page=="members") "active" else ""})
-							a(href="/members") Members
-						li(class={if(page=="contact") "active" else ""})
-							a(href="/contact") Contact Us
+						li(class={if(page=="meal") "active" else ""})
+							a(href="/meal") Meal
 				.col-md-1
 		#content
 			.row

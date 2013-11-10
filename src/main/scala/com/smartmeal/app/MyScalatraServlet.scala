@@ -5,16 +5,17 @@ import scalate.ScalateSupport
 
 class MyScalatraServlet extends SmartmealStack {
 
-  val pages = Array("")
   get("/") {
     contentType = "text/html"
     jade("home.jade")
   }
-  get("/:id/?") {
-    if (pages.contains(params("id"))) {
+  get("/home") {
       contentType = "text/html"
-      jade(params("id") + ".jade")
-    } else pass()
+      jade("home.jade")
+  }
+  get("/meal") {
+    contentType = "text/html"
+    jade("meal.jade")
   }
   
 }
