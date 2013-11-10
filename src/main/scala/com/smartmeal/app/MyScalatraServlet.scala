@@ -32,7 +32,7 @@ object MyLPProblem {
   get("/") {
     contentType = "text/html"
     MyLPProblem.solve
-    jade("home.jade")
+    // jade("home.jade")
   }
   get("/home") {
       contentType = "text/html"
