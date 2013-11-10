@@ -57,9 +57,11 @@ object MyLPProblem {
       val x33 = MIPVar(mip,"x33",0 to 1)
       val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33)
       mip.minimize(sum(0 to 33)(i => x(i)*cal(i))) subjectTo {
-        mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= 150)
+        // mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= 150)
         mip.add(x1 == 1)
-        mip.add(sum(0 to 33)(i => x(i)) == 4)
+        mip.add(x17 + x18 + x19 == 1)
+        mip.add(x20 +x21 + x22 + x23 + x24 + x25 + x6 == 1)
+        mip.add(x30 + x31 + x32 + x33 == 1)
       }
       x map (_.getValue)
   
