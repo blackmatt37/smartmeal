@@ -105,7 +105,7 @@ object MyLPProblem {
         // mip.add(sum(0 to 60)(i => x(i)*calcium(i)) <= info._6+3000)
       }
       val temp = ((x map (p => (p.getName.substring(1).toInt, p.getValue))))
-      (temp filter ( _._2 == 1.0)) map {case (k,v) => k}
+      (temp filter ( _._2 == 1.0)) map {case (k,v) => (primary(k).concat(second(k)), cal(k).toString, carbs(k).toString, sugar(k).toString, fat(k).toString, prot(k).toString, calcium(k).toString)}
   
    }
 }

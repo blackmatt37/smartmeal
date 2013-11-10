@@ -7,7 +7,7 @@
 -@ val fat: String
 -@ val protein: String
 -@ val calc: String
--@ val menu: Array[Int]
+-@ val menu: Array[(String, String, String, String, String, String, String)]
 
 h1 Your Nutrition Requirements
 
@@ -42,10 +42,10 @@ table.table
 		td Calcium
 - for(i <- 0 to menu.size)
 	tr
-		td= menu(1)
-		td
-		td
-		td
-		td
-		td
-		td
+		td= menu(i)._1
+		td= menu(i)._2
+		td= menu(i)._3
+		td= menu(i)._4
+		td= menu(i)._5
+		td= menu(i)._6
+		td= menu(i)._7
