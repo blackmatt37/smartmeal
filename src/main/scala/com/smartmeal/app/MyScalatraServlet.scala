@@ -104,9 +104,10 @@ object calc {
   }
   get("/meal") {
     contentType = "text/html"
+    jade("meal.jade")
     MyLPProblem.solve
     // println("AGAIN")
-    // jade("meal.jade")
+    
   }
   post("/meal") {
     params("meal")
