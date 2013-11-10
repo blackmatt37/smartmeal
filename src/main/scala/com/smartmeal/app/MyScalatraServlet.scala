@@ -98,7 +98,7 @@ object MyLPProblem {
         mip.add(x48 + x51 + x52 + x53 + x55 + x56 + x57 == 3)
         mip.add(x58 + x59 == 2)
       }
-      x map (_.getValue)
+      ((x map (p => (p.getName.substring(1), p.getValue))))
   
    }
 }
