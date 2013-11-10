@@ -199,6 +199,7 @@ object calc {
     // MyLPProblem.solve.mkString(" ")
   }
   post("/meal") {
+    contentType = "text/html"
     val break: Int  = params("break").toInt
     val lunch: Int  = params("lunch").toInt
     val dinner: Int = params("dinner").toInt
