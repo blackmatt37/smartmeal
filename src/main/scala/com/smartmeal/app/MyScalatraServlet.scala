@@ -41,8 +41,7 @@ object MyLPProblem {
         mip.add(x0 == 1)
         mip.add(x1 == 1)
       }
-      mip.status
-      // x(1).getValue
+      x map (_.getValue)
   
    }
 }
