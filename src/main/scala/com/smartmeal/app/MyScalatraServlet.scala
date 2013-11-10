@@ -1,21 +1,15 @@
 package com.smartmeal.app
 
-import scala.slick.session.Database
+
 import org.scalatra._
 import scalate.ScalateSupport
 import oscar.linprog.modeling._
 import oscar.linprog._
 import oscar.algebra._
-import scala.slick.session._
-import scala.slick.lifted.TypeMapper._
-import scala.slick.jdbc.{ GetResult, StaticQuery => Q }
-import Database.threadLocalSession
 
-// case class SlickApp(db: Database) extends MyScalatraServlet with SlickRoutes
 
-case class Supplier(id: Int, name: String, street: String, city: String, state: String, zip: String)
 
-class MyScalatraServlet(db: Database) extends SmartmealStack with GZipSupport {
+class MyScalatraServlet extends SmartmealStack with GZipSupport{
 
 object MyLPProblem {
    def solve =  {
@@ -57,21 +51,8 @@ object MyLPProblem {
   post("/meal") {
     params("meal")
   }
-  get("/db") {
-    db withSession {
-      Q.updateNA("create table suppliers("+
-  "id int not null primary key, "+
-  "name varchar not null, "+
-  "street varchar not null, "+
-  "city varchar not null, "+
-  "state varchar not null, "+
-  "zip varchar not null)").execute
-    }
-    "DONE"
-  }
   
 }
-
 
 
 
