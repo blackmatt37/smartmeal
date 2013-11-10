@@ -6,8 +6,8 @@ import scalate.ScalateSupport
 import oscar.linprog.modeling._
 import oscar.linprog._
 import oscar.algebra._
-
-
+import com.almworks.sqlite4java._
+import java.io._
 
 class MyScalatraServlet extends SmartmealStack with GZipSupport{
 
@@ -37,6 +37,7 @@ object MyLPProblem {
   }
   get("/home") {
       contentType = "text/html"
+      val db : SQLiteConnection = new SQLiteConnection(new File("/tmp/database"));
       jade("home.jade")
   }
   post("/home") {
