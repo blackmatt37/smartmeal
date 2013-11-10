@@ -98,6 +98,7 @@ object MyLPProblem {
         mip.add(x37 + x40 + x41 + x43 + x44 + x45 + x46 + x47 + x60 == 2)
         mip.add(x48 + x51 + x52 + x53 + x55 + x56 + x57 == 3)
         mip.add(x58 + x59 == 2)
+        mip.add(x(dinner) == 1) // force dinner
       }
       val temp = ((x map (p => (p.getName.substring(1).toInt, p.getValue))))
       (temp filter ( _._2 == 1.0)) map {case (k,v) => primary(k)}
