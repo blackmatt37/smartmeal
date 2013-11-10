@@ -59,6 +59,7 @@ object MyLPProblem {
       mip.minimize(sum(0 to 33)(i => x(i)*cal(i))) subjectTo {
         mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= 150)
         mip.add(x1 == 1)
+        mip.add(sum(0 to 33)(i => x(i)) == 4)
       }
       x map (_.getValue)
   
