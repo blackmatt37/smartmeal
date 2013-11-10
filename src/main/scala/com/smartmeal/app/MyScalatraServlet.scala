@@ -19,7 +19,7 @@ object MyLPProblem {
       val fat =   Array(8, 8, 12, 4, 3, 8, 12, 2, 6, 4, 0, 10, 21, 11, 6, 1, 5, 0.368, 8, 0, 3, 0.101, 1, 2, 2, 2, 4, 10, 8, 5, 0.273, 0.389, 0, 3)
       val prot =  Array(7, 7, 7, 2, 2, 2, 3, 5, 5, 0, 0, 5, 8, 3, 11, 8, 3, 2, 8, 9, 4, 2, 2, 6, 4, 2, 2, 11, 7, 5, 0.482, 1, 0.508, 11)
       val calc =  Array(189, 270, 190.1, 79, 160, 80.1, 30, 46, 47.1, 1.1, 0, 20, 60, 40, 90, 30, 60, 160, 300, 320, 150, 1.2, 140, 20, 130, 120, 180, 190, 30, 20, 10, 10, 0, 391)
-      
+
       val mip = MIPSolver()
       val x0 = MIPVar(mip,"x0",0 to 1)
       val x1 = MIPVar(mip,"x1",0 to 1)
@@ -57,7 +57,7 @@ object MyLPProblem {
       val x33 = MIPVar(mip,"x33",0 to 1)
       val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33)
       mip.minimize(sum(0 to 33)(i => x(i)*cal(i))) subjectTo {
-        mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= )
+        mip.add(sum(0 to 33)(i => x(i)*carb(i)) <= 150)
         mip.add(x1 == 1)
       }
       x map (_.getValue)
