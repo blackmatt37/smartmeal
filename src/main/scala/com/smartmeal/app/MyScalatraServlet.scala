@@ -22,7 +22,7 @@ object MyLPProblem {
       lp.add(x1 - 3.5*x3 == 0 )
       }
       // println("objective"+lp.getObjectiveValue()) 
-      x1
+      x1.value
    }
 }
 
