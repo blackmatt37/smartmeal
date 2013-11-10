@@ -15,10 +15,14 @@ object MyLPProblem {
    def solve =  {
       val cal = Array(255, 467, 287, 100, 311, 132, 225, 50, 117, 32, 35, 204, 404, 200, 272, 207, 65, 115, 150, 93, 188, 143, 142, 157, 147, 139, 166, 142, 100, 68, 91, 105, 72, 197)
       val mip = MIPSolver()
-      val x = Array.fill(30)(MIPVar(mip, "x", 0 to 1))
-     
-      mip.minimize(sum(x)) subjectTo {
-        mip.add(sum(0 to x.size)(i => x(i)*cal(i)) >= 200)
+      val x0 = MIPVar(mip,"x0",0,40)
+      val x1 = MIPVar(mip,"x1",0 to 1000) // can take integer value in range[0 .. 1000]
+      val x2 = MIPVar(mip,"x2",0 until 18)// can take integer value in range[0 .. 17] 
+      val x3 = MIPVar(mip,"x3",2,3)
+       mip.maximize(x0+2*x1+3*x2+x3) subjectTo {
+    mip.add(-1*x0 + x1 + x2 + 10*x3 <= 20)
+    mip.add(x0 - 3.0*x1 + x2 <= 30)
+    mip.add(x1 - 3.5*x3 == 0 )
       }
       mip.status
       // x(1).getValue
