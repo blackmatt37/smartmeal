@@ -25,9 +25,8 @@ object MyLPProblem {
     lp.add(x0 - 3.0*x1 + x2 <= 30)
     lp.add(x1 - 3.5*x3 == 0 )
     }
-    val x0v: Double = x0.getValue
-      // println("objective"+lp.getObjectiveValue()) 
-      x0v
+    x0.getValue
+  
    }
 }
 
@@ -114,9 +113,9 @@ object calc {
     
   }
   get("/meal") {
-    // contentType = "text/html"
+    contentType = "text/html"
     MyLPProblem.solve
-    println("AGAIN")
+    // println("AGAIN")
     // jade("meal.jade")
   }
   post("/meal") {
