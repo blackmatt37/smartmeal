@@ -1,0 +1,45 @@
+- attributes("title") = "Your Plan"
+- attributes("headline") = "Your Plan"
+- attributes("page") = "plan"
+-@ val cal:String 
+-@ val carbs: String 
+-@ val sugar: String
+-@ val fat: String
+-@ val protein: String
+-@ val calc: String
+-@ val menu: Array[Int]
+
+h1 Your Nutrition Requirements
+
+br
+
+table.table
+	tr
+		td Calories
+		td Carbohydrates (g)
+		td Sugar (g)
+		td Fat (g)
+		td Protein (g)
+		td Calcium (mg)
+	tr
+		td= cal
+		td= carbs
+		td= sugar
+		td= fat
+		td= protein
+		td= calc
+
+br
+
+table.table
+	tr
+		td Food Item
+		td Calories
+		td Carbohydrates
+		td Sugar
+		td Fat
+		td Protien
+		td Calcium
+
+- for(i <- 0 to menu.size)
+	p= menu(i)

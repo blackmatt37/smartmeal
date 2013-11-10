@@ -85,7 +85,7 @@ object MyLPProblem {
       val x59 = MIPVar(mip,"x59",0 to 1)
       val x60 = MIPVar(mip,"x60",0 to 1)
       val x = Array(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33, x34, x35, x36, x37, x38, x39, x40, x41, x42, x43, x44, x45, x46, x47, x48, x49, x50, x51, x52, x53, x54, x55, x56, x57, x58, x59, x60)
-      mip.minimize(sum(0 to 33)(i => x(i)*cal(i))) subjectTo {
+      mip.minimize(sum(0 to 60)(i => x(i)*cal(i))) subjectTo {
 
         mip.add(x(breakfast) == 1) //force picked meal
         mip.add(x17 + x18 + x19 == 1) //one drink
@@ -105,7 +105,7 @@ object MyLPProblem {
         // mip.add(sum(0 to 60)(i => x(i)*calcium(i)) <= info._6+3000)
       }
       val temp = ((x map (p => (p.getName.substring(1).toInt, p.getValue))))
-      (temp filter ( _._2 == 1.0)) map {case (k,v) => primary(k)}
+      (temp filter ( _._2 == 1.0)) map {case (k,v) => k}
   
    }
 }
@@ -202,7 +202,7 @@ object calc {
     val break: Int  = params("break").toInt
     val lunch: Int  = params("lunch").toInt
     val dinner: Int = params("dinner").toInt
-    MyLPProblem.solve(break, lunch, dinner).mkString(" || ")
+    jade("plan.jade", "menu" -> MyLPProblem.solve(break, lunch, dinner), "cal" -> info._1.toString.substring(0,4), "carbs" -> info._2.toString.substring(0,3), "sugar" -> info._3.toString, "fat" -> info._4.toString.substring(0,4), "protein" -> info._5.toString, "calc" -> info._6.toString)
   }
   var info = new Tuple6(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 }
