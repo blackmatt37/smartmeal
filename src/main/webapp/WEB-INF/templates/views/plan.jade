@@ -15,12 +15,18 @@ br
 
 table.table
 	tr
-		td Calories
-		td Carbohydrates (g)
-		td Sugar (g)
-		td Fat (g)
-		td Protein (g)
-		td Calcium (mg)
+		td 
+			b Calories
+		td 
+			b Carbohydrates (g)
+		td 
+			b Sugar (g)
+		td 
+			b Fat (g)
+		td 
+			b Protein (g)
+		td 
+			b Calcium (mg)
 	tr
 		td= cal
 		td= carbs
@@ -33,13 +39,20 @@ br
 
 table.table
 	tr
-		td Food Item
-		td Calories
-		td Carbohydrates
-		td Sugar
-		td Fat
-		td Protien
-		td Calcium
+		td 
+			b Food Item
+		td 
+			b Calories
+		td 
+			b Carbohydrates
+		td 
+			b Sugar
+		td 
+			b Fat
+		td 
+			b Protien
+		td 
+			b Calcium
 	- for(i <- 0 until menu.size)
 		tr
 			td= menu(i)._1
