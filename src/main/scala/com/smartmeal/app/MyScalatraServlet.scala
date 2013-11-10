@@ -11,11 +11,11 @@ import scala.slick.lifted.TypeMapper._
 import scala.slick.jdbc.{ GetResult, StaticQuery => Q }
 import Database.threadLocalSession
 
-case class SlickApp(db: Database) extends MyScalatraServlet with SlickRoutes
+// case class SlickApp(db: Database) extends MyScalatraServlet with SlickRoutes
 
 case class Supplier(id: Int, name: String, street: String, city: String, state: String, zip: String)
 
-class MyScalatraServlet extends SmartmealStack with GZipSupport{
+class MyScalatraServlet(db: Database) extends SmartmealStack with GZipSupport {
 
 object MyLPProblem {
    def solve =  {
@@ -57,10 +57,6 @@ object MyLPProblem {
   post("/meal") {
     params("meal")
   }
-  
-}
-trait SlickRoutes extends ScalatraServlet {
-  val db: Database
   get("/db") {
     db withSession {
       Q.updateNA("create table suppliers("+
@@ -73,7 +69,9 @@ trait SlickRoutes extends ScalatraServlet {
     }
     "DONE"
   }
+  
 }
+
 
 
 
