@@ -20,6 +20,7 @@ object MyLPProblem {
       mip.minimize(sum(x)) subjectTo {
         mip.add(sum(0 to x.size)(i => x(i)*cal(i)) >= 200)
       }
+      mip.status
       // x(1).getValue
   
    }
@@ -104,8 +105,8 @@ object calc {
   }
   get("/meal") {
     contentType = "text/html"
-    jade("meal.jade")
-    // MyLPProblem.solve
+    // jade("meal.jade")
+    MyLPProblem.solve
     // println("AGAIN")
     
   }
