@@ -126,7 +126,7 @@ object calc {
   get("/meal") {
     contentType = "text/html"
     // jade("meal.jade")
-    MyLPProblem.solve
+    println(MyLPProblem.solve.mkString(" "))
     // println("AGAIN")
     
   }
